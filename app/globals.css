@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Inter", sans-serif;
+}
+
+.text-large {
+  @apply text-[24px] font-[600] text-[#1a1f24] dark:text-[#ffffff];
+}
+
+.text-medium {
+  @apply text-[20px] text-[#1a1f24] dark:text-[#ffffff];
+}
+
+.text-small {
+  @apply text-[16px];
+}
+
+.menu {
+  @apply text-[14px] font-[600] text-[#1a1f24b0] hover:text-[#1a1f24] dark:text-[#999999] transition;
+}
+.active {
+  @apply text-[#1a1f24] dark:text-[#ffffff];
+}
+
+.text-extra-small {
+  @apply text-[13px];
+}
+
+.background {
+  @apply bg-[#ffffff] dark:bg-[#171718];
+}
+
+.card-bg {
+  @apply bg-[#f8f8f8] hover:bg-[#EEEEEE] dark:bg-[#202021] dark:hover:bg-[#1A1A1B];
+}
+
+.large-btn {
+  @apply text-[14px] font-[600] text-[#4595d0] border border-[#4595d0] hover:bg-[#4595d0] hover:bg-opacity-20 transition;
+}
+
+.background {
+  @apply bg-white dark:bg-[#171718];
+}
