@@ -1,5 +1,12 @@
-import { Theme } from "@/app/components";
+import { Images } from "@/assets";
 import { Metadata } from "next";
+import Image from "next/image";
+import About from "./components/about";
+import Communites from "./components/communites/communites";
+import Credentials from "./components/credentials/credentials";
+import Hero from "./components/hero";
+import Projects from "./components/projects/projects";
+import TechStacks from "./components/tech-stacks/tech-stacks";
 
 export const metadata: Metadata = {
   title: "Abdulalh Mia | Full Stack Web Application Developer",
@@ -9,10 +16,27 @@ export const metadata: Metadata = {
 
 const HomePage = () => {
   return (
-    <div className="background">
-      Home
-      <Theme />
-    </div>
+    <>
+      <div className="container flex lg:flex-row flex-col gap-8 py-12 lg:px-0 px-5">
+        <div className="lg:w-[160px] w-full">
+          <Image
+            src={Images.PorfileImg}
+            alt="Abdullah Mia"
+            className="w-[140px] h-[140px] object-contain rounded-full ring-2 ring-opacity-10"
+          />
+          {/* <img src={img} className="w-[160px] h-[160px] rounded-full" alt="" /> */}
+        </div>
+        <div className="w-full flex-1">
+          {/* All Section will be here..... */}
+          <Hero />
+          <About />
+          <Credentials />
+          <TechStacks />
+          <Projects isBorder={true} />
+          <Communites />
+        </div>
+      </div>
+    </>
   );
 };
 

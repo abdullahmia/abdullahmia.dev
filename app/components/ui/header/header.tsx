@@ -13,7 +13,7 @@ const MainHeader = ({ toggleDrawer }: MainHeaderProps) => {
   const router = useRouter();
 
   return (
-    <header className=" container flex justify-between items-center py-3 sticky top-0 lg:px-0 px-5">
+    <header className="background duration-200 container flex justify-between items-center py-3 sticky top-0 lg:px-0 px-5">
       <div>
         <Link href="/" className="lg:block hidden text-medium font-[600]">
           Abdullah Mia
@@ -39,6 +39,12 @@ const MainHeader = ({ toggleDrawer }: MainHeaderProps) => {
           <button className="lg:block hidden large-btn px-7 py-2 rounded">
             Follow
           </button>
+          <Link
+            href="/auth/login"
+            className="lg:block hidden large-btn px-7 py-2 rounded"
+          >
+            Login
+          </Link>
         </div>
       </div>
     </header>
