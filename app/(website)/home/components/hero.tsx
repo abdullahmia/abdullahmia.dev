@@ -36,16 +36,16 @@ const Hero = () => {
         </div>
 
         <div className="flex flex-wrap gap-3">
-          <p className="flex items-center gap-2 text-extra-small font-semibold px-3 py-1 rounded-full cursor-pointer bg-[#f9f9f9] hover:bg-[#e7e1e1] text-[#727a80] dark:text-gray-300 dark:bg-[#1d1d1e] dark:hover:bg-[#151516]">
+          <p className="flex items-center gap-2 text-extra-small font-semibold px-3 py-1 rounded-full cursor-pointer bg-[#f9f9f9] hover:bg-[#e7e1e1] text-[#727a80] dark:text-gray-300 dark:bg-[#1d1d1e] dark:hover:bg-[#151516] duration-200">
             <BiDesktop /> Web Developer
           </p>
-          <p className="flex items-center gap-2 text-extra-small font-semibold px-3 py-1 rounded-full cursor-pointer bg-[#f9f9f9] hover:bg-[#e7e1e1] text-[#727a80] dark:text-gray-300 dark:bg-[#1d1d1e] dark:hover:bg-[#151516]">
+          <p className="flex items-center gap-2 text-extra-small font-semibold px-3 py-1 rounded-full cursor-pointer bg-[#f9f9f9] hover:bg-[#e7e1e1] text-[#727a80] dark:text-gray-300 dark:bg-[#1d1d1e] dark:hover:bg-[#151516] duration-200">
             <BsCodeSlash className="text-blue-600" /> Software Engineering
           </p>
-          <p className="flex items-center gap-2 text-extra-small font-semibold px-3 py-1 rounded-full cursor-pointer hover:bg-[#e7e1e1] bg-[#f9f9f9] text-[#727a80] dark:text-gray-300 dark:bg-[#1d1d1e] dark:hover:bg-[#151516]">
+          <p className="flex items-center gap-2 text-extra-small font-semibold px-3 py-1 rounded-full cursor-pointer hover:bg-[#e7e1e1] bg-[#f9f9f9] text-[#727a80] dark:text-gray-300 dark:bg-[#1d1d1e] dark:hover:bg-[#151516] duration-200">
             <BsCodeSlash className="text-indigo-500" /> React Developer
           </p>
-          <p className="flex items-center gap-2 text-extra-small font-semibold px-3 py-1 rounded-full cursor-pointer hover:bg-[#e7e1e1] bg-[#f9f9f9] text-[#727a80] dark:text-gray-300 dark:bg-[#1d1d1e] dark:hover:bg-[#151516]">
+          <p className="flex items-center gap-2 text-extra-small font-semibold px-3 py-1 rounded-full cursor-pointer hover:bg-[#e7e1e1] bg-[#f9f9f9] text-[#727a80] dark:text-gray-300 dark:bg-[#1d1d1e] dark:hover:bg-[#151516] duration-200">
             <BiUserVoice /> Open to Collaborate
           </p>
         </div>

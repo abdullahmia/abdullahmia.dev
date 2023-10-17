@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const LoginPage = () => {
   return (
     <div className="h-screen w-full flex items-center justify-center">
-      <div className="w-1/4 h-auto">
+      <div className="w-[400px] h-auto">
         <div className="flex items-center justify-center">
           <Image
             src={Images.PorfileImg}

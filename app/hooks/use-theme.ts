@@ -7,9 +7,7 @@ import { setInitialtheme } from "../redux/features/theme/theme-slice";
 
 export const useTheme = () => {
   const [isTheme, setIsTheme] = useState<boolean>(false);
-  const theme = localStorage.getItem(config.THEME) || "dark";
-
-  console.log("Theme", theme);
+  const theme = localStorage?.getItem(config.THEME) || "dark";
 
   // hooks
   const dispatch = useAppDispatch();
