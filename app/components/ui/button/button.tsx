@@ -27,7 +27,7 @@ export const Button = (props: ButtonProps) => {
           : props.varriant === "danger"
           ? "bg-[#F87171] text-white"
           : props.varriant === "ghost"
-          ? "bg-transparent text-gray-700 dark:text-gray-200"
+          ? "bg-transparent text-gray-300 dark:text-gray-200"
           : props.varriant === "outline"
           ? "bg-white text-[#4e5052] border dark:border-gray-700 dark:bg-[#101011]"
           : "bg-[#4595D0] text-white"

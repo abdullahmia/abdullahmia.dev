@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { BiMenu } from "react-icons/bi";
-import { Theme } from "../..";
+import { ThemeSwitcher } from "../..";
 import { NavLink } from "../nav-link";
 
 interface MainHeaderProps {
@@ -35,7 +35,7 @@ const MainHeader = ({ toggleDrawer }: MainHeaderProps) => {
 
         {/* Buttons */}
         <div className="flex items-center gap-3 lg:border-l pl-5">
-          <Theme />
+          <ThemeSwitcher />
           <button className="lg:block hidden large-btn px-7 py-2 rounded">
             Follow
           </button>

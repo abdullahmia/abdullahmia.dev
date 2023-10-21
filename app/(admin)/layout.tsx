@@ -1,18 +1,16 @@
 import { Suspense } from "react";
-import { DashboardLayout } from "../components/ui";
+import { DashboardLayout as DashLayout } from "../components/ui";
 
 interface AppLayoutProps {
   children: React.ReactNode;
 }
 
-export const AppLayout = ({ children }: AppLayoutProps) => {
+export default function DashboardLayout({ children }: AppLayoutProps) {
   return (
     <>
-      <DashboardLayout>
+      <DashLayout>
         <Suspense>{children}</Suspense>
-      </DashboardLayout>
+      </DashLayout>
     </>
   );
-};
-
-export default AppLayout;
+}
