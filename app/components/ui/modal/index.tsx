@@ -1,6 +1,6 @@
 "use client";
 
-import { useAppSelector } from "@/app/redux";
+import { useTheme } from "next-themes";
 
 export interface ModalProps {
   children: React.ReactNode;
@@ -14,8 +14,7 @@ export interface ModalProps {
 }
 
 export default function Modal(props: ModalProps) {
-  const { theme } = useAppSelector((state) => state.theme);
-  console.log("Theme: ", theme);
+  const { theme } = useTheme();
 
   const modalContainer = {
     width: props.width ? props.width : "800px",

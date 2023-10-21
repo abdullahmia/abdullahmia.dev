@@ -1,11 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import themeSlice from "./features/theme/theme-slice";
-// ...
 
 export const store = configureStore({
-  reducer: {
-    theme: themeSlice,
-  },
+  reducer: {},
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
 

@@ -1,4 +1,4 @@
-import { Theme } from "../..";
+import { ThemeSwitcher } from "../..";
 
 export const DashboardHeader = () => {
   return (
@@ -6,7 +6,7 @@ export const DashboardHeader = () => {
       <div className="flex justify-between items-center">
         <div className="text-xl font-semibold">Abir</div>
         <div>
-          <Theme />
+          <ThemeSwitcher />
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@ interface AppLayoutProps {
   children: React.ReactNode;
 }
 
-export const AppLayout = ({ children }: AppLayoutProps) => {
+export default function WebsiteLayout({ children }: AppLayoutProps) {
   return (
     <>
       <Header />
@@ -14,6 +14,4 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
       <Footer />
     </>
   );
-};
-
-export default AppLayout;
+}

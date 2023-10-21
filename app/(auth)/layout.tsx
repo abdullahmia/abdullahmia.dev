@@ -4,12 +4,10 @@ interface AppLayoutProps {
   children: React.ReactNode;
 }
 
-export const AppLayout = ({ children }: AppLayoutProps) => {
+export default function AuthLayout({ children }: AppLayoutProps) {
   return (
     <>
       <Suspense>{children}</Suspense>
     </>
   );
-};
-
-export default AppLayout;
+}
