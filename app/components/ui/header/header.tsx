@@ -15,7 +15,7 @@ const MainHeader = ({ toggleDrawer }: MainHeaderProps) => {
   return (
     <header className="background duration-200 container flex justify-between items-center py-3 sticky top-0 lg:px-0 px-5">
       <div>
-        <Link href="/" className="lg:block hidden text-medium font-[600]">
+        <Link href="/home" className="lg:block hidden text-medium font-[600]">
           Abdullah Mia
         </Link>
         <button
@@ -28,7 +28,7 @@ const MainHeader = ({ toggleDrawer }: MainHeaderProps) => {
       <div className="flex items-center justify-center">
         {/* Menus */}
         <div className="lg:block hidden pr-6 menu space-x-6">
-          <NavLink href="/">Home</NavLink>
+          <Link href="/home">Home</Link>
           <NavLink href="/project">Projects</NavLink>
           <NavLink href="/">Contact</NavLink>
         </div>

@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { AiOutlineProject } from "react-icons/ai";
 import { BiHomeAlt2, BiMessage } from "react-icons/bi";
-import { BsGear } from "react-icons/bs";
 import { CiSquareInfo } from "react-icons/ci";
 import { HiOutlineDocumentText } from "react-icons/hi";
 import { IoIosLogOut } from "react-icons/io";
@@ -65,14 +64,6 @@ export const Sidebar = () => {
           >
             <BiMessage size={17} />
             Messages
-          </Link>
-
-          <Link
-            href="/admin"
-            className="flex items-center justify-start gap-2 capitalize text-sm text-gray-300 dark:text-gray-200 px-2 py-2 hover:bg-[#1f2c4b] dark:hover:bg-[#171718] duration-200"
-          >
-            <BsGear size={17} />
-            Settings
           </Link>
         </div>
 
