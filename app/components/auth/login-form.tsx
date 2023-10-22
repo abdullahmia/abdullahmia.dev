@@ -17,7 +17,7 @@ const LoginForm = () => {
     setTimeout(() => {
       setIsLoading(false);
       router.push("/admin");
-    }, 2000);
+    }, 600);
   };
 
   return (

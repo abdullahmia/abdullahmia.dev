@@ -10,7 +10,7 @@ export const DashboardLayout = (props: DashboardLayoutProps) => {
       <Sidebar />
       <main className="flex-1 ml-[220px]">
         <DashboardHeader />
-        <main className="mt-16 w-[1000px] m-auto">{props.children}</main>
+        <main className="mt-6 w-[1000px] m-auto">{props.children}</main>
       </main>
     </div>
   );
