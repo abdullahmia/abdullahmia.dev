@@ -7,16 +7,12 @@ import Image from "next/image";
 export const DisplaySwitcher = () => {
   const { theme, setTheme } = useTheme();
 
-  const toggleTheme = () => {
-    if (theme === "dark") {
-      setTheme("light");
-    } else {
-      setTheme("dark");
-    }
+  const toggleTheme = (theme: string) => {
+    setTheme(theme);
   };
 
   return (
-    <div className="mt-3">
+    <div className="mt-5">
       <h2 className="text-[15px] text-[#1a1f24] font-semibold dark:text-white">
         Appearance
       </h2>
@@ -25,9 +21,12 @@ export const DisplaySwitcher = () => {
       </p>
 
       <div className="flex items-center gap-6">
-        <div onClick={toggleTheme} className="w-72 space-y-3 cursor-pointer">
+        <div
+          onClick={() => toggleTheme("dark")}
+          className="w-72 space-y-3 cursor-pointer"
+        >
           <Image
-            src={Images.DarkWebstieThumbnailImg}
+            src={Images.DarkDashboardThumbnailImg}
             alt="dark theme"
             className="w-72 h-40 rounded-md mt-3 border"
           />
@@ -43,13 +42,18 @@ export const DisplaySwitcher = () => {
                 } rounded-full`}
               ></div>
             </div>
-            <p className="text-[14px]  text-[#1a1f24]">Dark</p>
+            <p className="text-[14px]  text-[#1a1f24] dark:text-gray-300">
+              Dark
+            </p>
           </div>
         </div>
 
-        <div onClick={toggleTheme} className="w-72 space-y-3 cursor-pointer">
+        <div
+          onClick={() => toggleTheme("light")}
+          className="w-72 space-y-3 cursor-pointer"
+        >
           <Image
-            src={Images.LightWebstieThumbnailImg}
+            src={Images.LightDashboardThumbnailImg}
             alt="dark theme"
             className="w-72 h-40 rounded-md mt-3"
           />
@@ -65,7 +69,9 @@ export const DisplaySwitcher = () => {
                 } rounded-full`}
               ></div>
             </div>
-            <p className="text-[14px]  text-[#1a1f24]">Light</p>
+            <p className="text-[14px]  text-[#1a1f24] dark:text-gray-300">
+              Light
+            </p>
           </div>
         </div>
       </div>
