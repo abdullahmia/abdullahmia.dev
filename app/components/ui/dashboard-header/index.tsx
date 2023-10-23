@@ -47,7 +47,7 @@ export const DashboardHeader = () => {
               <DropdownElement.DropdownItem type="link" to="/admin/appearance">
                 <AiOutlineUser size={16} /> Account
               </DropdownElement.DropdownItem>
-              <DropdownElement.DropdownItem type="link" to="/admin/appearance">
+              <DropdownElement.DropdownItem type="link" to="/admin/settings">
                 <BsGear size={16} /> Settings
               </DropdownElement.DropdownItem>
               <DropdownElement.DropdownItem type="link" to="/admin/appearance">

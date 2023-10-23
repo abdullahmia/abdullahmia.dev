@@ -14,7 +14,7 @@ export const LinkedDevices = () => {
 
       <div className="mt-5 flex items-center gap-4">
         {/* Single Device */}
-        <div className="border p-5 rounded h-64">
+        <div className="border p-5 rounded h-64 dark:border-gray-800 duration-200">
           <SiWindows11 size={150} />
           <div className="flex items-center justify-between mt-4">
             <h2>Windows</h2>
@@ -24,7 +24,7 @@ export const LinkedDevices = () => {
           </div>
         </div>
 
-        <div className="border p-5 rounded h-64">
+        <div className="border p-5 rounded h-64 dark:border-gray-800 duration-200">
           <FaUbuntu size={150} />
           <div className="flex items-start justify-between mt-4">
             <h2 className="flex flex-col gap-2">
@@ -37,7 +37,7 @@ export const LinkedDevices = () => {
           </div>
         </div>
 
-        <div className="border p-5 rounded h-64">
+        <div className="border p-5 rounded h-64 dark:border-gray-800 duration-200">
           <SiMacos size={150} />
           <div className="flex items-center justify-between mt-4">
             <h2>Mac Os</h2>
