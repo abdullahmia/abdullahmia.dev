@@ -28,7 +28,7 @@ export const DisplaySwitcher = () => {
           <Image
             src={Images.DarkDashboardThumbnailImg}
             alt="dark theme"
-            className="w-72 h-40 rounded-md mt-3 border"
+            className="w-72 h-40 rounded-md mt-3 border dark:border-gray-800"
           />
           <div className="flex items-center justify-center gap-3">
             <div
@@ -55,7 +55,7 @@ export const DisplaySwitcher = () => {
           <Image
             src={Images.LightDashboardThumbnailImg}
             alt="dark theme"
-            className="w-72 h-40 rounded-md mt-3"
+            className="w-72 h-40 rounded-md mt-3 border dark:border-gray-800"
           />
           <div className="flex items-center justify-center gap-3">
             <div
