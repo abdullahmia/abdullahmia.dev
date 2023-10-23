@@ -44,3 +44,7 @@
 .background {
   @apply bg-white dark:bg-[#171718];
 }
+
+.card-bg {
+  @apply bg-[#101011];
+}

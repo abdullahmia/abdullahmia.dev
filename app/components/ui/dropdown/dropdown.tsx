@@ -42,6 +42,7 @@ export const Dropdown = ({ children, actionElement }: DropdownProps) => {
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="options-menu"
+          onClick={toggleDropdown}
         >
           {children}
         </div>

@@ -2,7 +2,10 @@ import DaffodilImg from "./images/daffodil.jpeg";
 import DpiImg from "./images/dpi.png";
 import PorfileImg from "./images/profile.png";
 
-import DarkWebstieThumbnailImg from "./images/dark-website.png";
+import DarkDashboardThumbnailImg from "./images/dark-version-dashboard.png";
+import MacosThumbnail from "./images/devices/macos.png";
+import UbuntuThumbnail from "./images/devices/ubuntu-logo.png";
+import WindowsThumbnail from "./images/devices/windows-11.png";
 import CssImg from "./images/languages/css.png";
 import DiscordImg from "./images/languages/discord.jpg";
 import DockerImg from "./images/languages/docker.png";
@@ -21,7 +24,7 @@ import ReactImg from "./images/languages/react.png";
 import ReduxImg from "./images/languages/redux.png";
 import TailwindImg from "./images/languages/tailwindcss.png";
 import VscodeImg from "./images/languages/vscode.png";
-import LightWebstieThumbnailImg from "./images/light-website.png";
+import LightDashboardThumbnailImg from "./images/light-version-dashboard.png";
 import ThumbnailImg from "./images/thumbnail.jpg";
 
 export const Images = {
@@ -47,6 +50,9 @@ export const Images = {
   TailwindImg,
   VscodeImg,
   ThumbnailImg,
-  DarkWebstieThumbnailImg,
-  LightWebstieThumbnailImg,
+  LightDashboardThumbnailImg,
+  DarkDashboardThumbnailImg,
+  WindowsThumbnail,
+  UbuntuThumbnail,
+  MacosThumbnail,
 };

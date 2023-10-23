@@ -1,8 +1,13 @@
+import { DashboardWidgets } from "./components/dashboard-widgets";
+import { RecentMessages } from "./components/recent-messages";
+
 const AdminDashboard = () => {
   return (
-    <div>
-      <div className="py-5 px-5 bg-gray-100">Admin Dashboard</div>
-    </div>
+    <>
+      <DashboardWidgets />
+
+      <RecentMessages />
+    </>
   );
 };
 

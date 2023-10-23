@@ -1,15 +1,9 @@
-import LoginForm from "@/app/components/auth/login-form";
+import PasswordResetForm from "@/app/components/auth/forgot-password-form";
 import { Images } from "@/assets";
-import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "Login | Abdulalh Mia",
-  description: "Login to your account to access your dashboard.",
-};
-
-const LoginPage = () => {
+const ForgotPassword = () => {
   return (
     <div className="h-screen w-full flex items-center justify-center">
       <div className="w-[400px] h-auto">
@@ -22,19 +16,21 @@ const LoginPage = () => {
         </div>
         <div className="flex items-center justify-center">
           <h1 className="text-2xl font-bold text-gray-700 dark:text-white">
-            Welcome Back!
+            RESET PASSWORD?
           </h1>
         </div>
 
         <div className="mt-5">
-          <LoginForm />
+          <PasswordResetForm />
         </div>
 
         <div className="mt-7">
           <p className="text-sm text-gray-500 dark:text-[#999] mt-5">
-            By clicking “Continue” above, you acknowledge that you have read and
-            understood, Aren&rsquo;t admin? go to{" "}
-            <Link href={"/home"}>home</Link>.
+            Enter your email address and we&rsquo;ll send you an email with
+            instructions to reset your password. Go to{" "}
+            <Link href="/auth/login" className="text-blue-400">
+              login?
+            </Link>
           </p>
         </div>
       </div>
@@ -42,4 +38,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default ForgotPassword;
