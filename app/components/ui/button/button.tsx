@@ -25,6 +25,7 @@ interface ButtonProps {
     | "ghost"
     | "outline"
     | "no-styled";
+  rounded?: "sm" | "md" | "lg" | "full";
 }
 
 export const Button = (props: ButtonProps) => {
@@ -59,7 +60,15 @@ export const Button = (props: ButtonProps) => {
       }
       
       ${props.color === "danger" ? "text-red-400" : "text-gray-700"}
-      
+      ${
+        props.rounded === "sm"
+          ? "rounded-sm"
+          : props.rounded === "md"
+          ? "rounded-md"
+          : props.rounded === "lg"
+          ? "rounded-lg"
+          : "rounded-full"
+      }
       `}
     >
       {props.loading ? <Loader size={18} /> : props.icon}

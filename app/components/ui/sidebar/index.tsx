@@ -31,7 +31,7 @@ export const Sidebar = () => {
           </Link>
 
           <Link
-            href="/admin"
+            href="/admin/projects"
             className="flex items-center justify-start gap-2 capitalize text-sm text-gray-300 dark:text-gray-200 px-2 py-2 hover:bg-[#1f2c4b] dark:hover:bg-[#171718] duration-200"
           >
             <AiOutlineProject size={17} />
