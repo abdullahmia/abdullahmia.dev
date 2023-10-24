@@ -14,10 +14,10 @@ const Project = () => {
           <span className="text-[12px]">Visit</span>
         </button>
         <h2 className="text-[#1a1f24] font-semibold text-[16px] hover:underline dark:text-[#fff]">
-          Sumit Saha in Channel 24 Muktokontho program
+          Full Stack web application
         </h2>
         <p className="text-[15px] text-[#727a80]">
-          Sumit Saha featured in Channel 24 TV Muktokontho program
+          Abdullah Mia featured project no the github
         </p>
         <div className="flex items-center gap-2">
           <div className="w-5 h-5">

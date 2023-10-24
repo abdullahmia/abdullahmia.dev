@@ -4,7 +4,7 @@ interface AvatarProps {
   size: "small" | "medium" | "large";
   image?: StaticImageData | string | null | undefined;
   name: string;
-  rounded?: true;
+  rounded?: boolean;
 }
 
 const getInitials = (name: string): string => {
@@ -32,7 +32,9 @@ export const Avatar = ({ size, image, name, rounded = true }: AvatarProps) => {
         <Image
           src={image}
           alt={name}
-          className="w-full h-full object-cover rounded-full ring-2 ring-opacity-10"
+          className={`w-full h-full object-cover ring-2 ring-opacity-10 ${
+            rounded ? "rounded-full" : "rounded-none"
+          }`}
         />
       ) : (
         <span className="text-white text-sm font-semibold">

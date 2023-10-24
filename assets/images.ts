@@ -25,7 +25,8 @@ import ReduxImg from "./images/languages/redux.png";
 import TailwindImg from "./images/languages/tailwindcss.png";
 import VscodeImg from "./images/languages/vscode.png";
 import LightDashboardThumbnailImg from "./images/light-version-dashboard.png";
-import ThumbnailImg from "./images/thumbnail.jpg";
+import ThumbnailBgImg from "./images/project-bg.svg";
+import ThumbnailImg from "./images/project.png";
 
 export const Images = {
   PorfileImg,
@@ -55,4 +56,5 @@ export const Images = {
   WindowsThumbnail,
   UbuntuThumbnail,
   MacosThumbnail,
+  ThumbnailBgImg,
 };
