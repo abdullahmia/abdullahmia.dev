@@ -41,6 +41,26 @@ yarn dev
 pnpm dev
 ```
 
+Run with the docker:
+
+```bash
+npm run docker:dev
+# or
+yarn docker:dev
+# or
+pnpm docker:dev
+```
+
+Stop the docker:
+
+```bash
+npm run docker:stop
+# or
+yarn docker:stop
+# or
+pnpm docker:stop
+```
+
 ## Live Demo
 
 You can view the live version of **abdullahmia.dev** at [https://abdullahmia.dev](https://portfolio-iota-six-83.vercel.app/).

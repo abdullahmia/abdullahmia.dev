@@ -7,6 +7,8 @@ export interface InputProps {
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   width?: "full" | "half" | "third" | "quarter" | "auto";
+  varriant?: "no-styled";
+  fontSizeVariant?: "small" | "medium" | "large";
 }
 
 export const Input = ({
@@ -15,7 +17,9 @@ export const Input = ({
   placeholder,
   value,
   onChange,
+  varriant,
   width = "full",
+  fontSizeVariant,
 }: InputProps) => {
   return (
     <div>
@@ -26,7 +30,19 @@ export const Input = ({
         onChange={onChange}
         placeholder={placeholder || ""}
         className={`
-          border px-3 py-2 rounded focus:outline-none dark:border-[#202021] dark:text-[#999999] dark:bg-transparent
+          ${
+            varriant === "no-styled"
+              ? `text-2xl dark:bg-transparent ${
+                  fontSizeVariant === "small"
+                    ? "text-sm"
+                    : fontSizeVariant === "medium"
+                    ? "text-md"
+                    : fontSizeVariant === "large"
+                    ? "text-lg"
+                    : ""
+                }`
+              : "border px-3 py-2 rounded dark:border-[#202021] dark:text-[#999999] dark:bg-transparent"
+          }
           ${
             width === "full"
               ? "w-full"
@@ -40,7 +56,7 @@ export const Input = ({
               ? "w-auto"
               : ""
           }
-        
+        focus:outline-none
         `}
       />
     </div>
