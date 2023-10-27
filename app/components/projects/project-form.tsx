@@ -1,27 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import Editor from "../editor/editor";
+
+import dynamic from "next/dynamic";
+import { Button } from "..";
 import { ThumbnailUpload } from "../image-upload/thumbnail-upload";
 import FormElements from "../ui/form-elements";
 
-// Initial Data
-const INITIAL_DATA = {
-  time: new Date().getTime(),
-  blocks: [
-    {
-      type: "header",
-      data: {
-        text: "This is my awesome editor!",
-        level: 1,
-      },
-    },
-  ],
-};
+const Editor = dynamic(() => import("../editor/editor"), { ssr: false });
 
 export const ProjectForm = () => {
   const [thunmbnail, setThumbnail] = useState(null);
-  const [data, setData] = useState(INITIAL_DATA);
 
   /**
    * HANDLERS
@@ -36,10 +25,13 @@ export const ProjectForm = () => {
     setThumbnail(null);
   };
 
-  console.log(data);
+  // handle editor content change
+  const handleEditorContentChange = (value: string) => {
+    console.log(value);
+  };
 
   return (
-    <div>
+    <form>
       {/* Thumbnail Uploader */}
       <ThumbnailUpload
         handleThumbnailRemove={handleThumbnailRemove}
@@ -49,30 +41,49 @@ export const ProjectForm = () => {
 
       <div className="mt-8 space-y-4">
         <div>
-          <FormElements.Label>Project Title</FormElements.Label>
-          <FormElements.Input placeholder="Project title" />
+          <FormElements.Input
+            varriant="no-styled"
+            placeholder="Start adding your project with a title"
+          />
         </div>
 
-        <div className="w-full flex gap-4">
-          <div className="w-full">
-            <FormElements.Label>Live link</FormElements.Label>
-            <FormElements.Input placeholder="Live link" width="full" />
-          </div>
-          <div className="w-full">
-            <FormElements.Label>Code link</FormElements.Label>
-            <FormElements.Input placeholder="Link link" />
-          </div>
+        <div className="w-full">
+          <FormElements.Input
+            varriant="no-styled"
+            fontSizeVariant="small"
+            placeholder="Project deployed link"
+            width="full"
+          />
+        </div>
+        <div className="w-full">
+          <FormElements.Input
+            varriant="no-styled"
+            fontSizeVariant="small"
+            placeholder="Project codebase link"
+          />
         </div>
 
-        {/* Description */}
         <div>
           <Editor
-            data={data}
-            onChange={setData}
-            editorblock="editorjs-container"
+            onChange={handleEditorContentChange}
+            initialContent={JSON.stringify(
+              [
+                {
+                  type: "paragraph",
+                  children: [{ text: "A line of text in a paragraph." }],
+                },
+              ],
+              null,
+              2
+            )}
           />
         </div>
       </div>
-    </div>
+
+      <div className="mt-8">
+        {/* Submit */}
+        <Button varriant="primary">Create Project</Button>
+      </div>
+    </form>
   );
 };
