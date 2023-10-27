@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "docker:dev": "docker build -t abdullahmia.dev . && docker run -p 3000:3000 abdullahmia.dev",
+    "docker:stop": "docker stop $(docker ps -a -q --filter ancestor=abdullahmia.dev --format={{.ID}})"
   },
   "dependencies": {
     "@blocknote/core": "^0.9.5",
