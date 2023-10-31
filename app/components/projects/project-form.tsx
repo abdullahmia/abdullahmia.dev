@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import { techStacks } from "@/app/constants";
 import dynamic from "next/dynamic";
 import { Button } from "..";
 import { ThumbnailUpload } from "../image-upload/thumbnail-upload";
@@ -31,7 +32,7 @@ export const ProjectForm = () => {
   };
 
   return (
-    <form className="bg-gray-100 p-5">
+    <form className="bg-gray-100 dark:bg-[#101011] p-5">
       {/* Thumbnail Uploader */}
       <ThumbnailUpload
         handleThumbnailRemove={handleThumbnailRemove}
@@ -57,6 +58,11 @@ export const ProjectForm = () => {
             <FormElements.Label>Project codebase link</FormElements.Label>
             <FormElements.Input placeholder="Project codebase link" />
           </div>
+        </div>
+
+        <div className="w-full">
+          <FormElements.Label>Tech Stack</FormElements.Label>
+          <FormElements.Select options={techStacks} />
         </div>
 
         <div>
