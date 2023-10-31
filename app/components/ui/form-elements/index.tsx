@@ -1,10 +1,12 @@
 import { FormError, FromErrorProps } from "./error";
 import { Input, InputProps } from "./input";
 import { Label, LabelProps } from "./lable";
+import { Textarea, TextareaProps } from "./textarea";
 
 export const FormElements = {
   Label: (props: LabelProps) => <Label {...props} />,
   Input: (props: InputProps) => <Input {...props} />,
+  Textarea: (props: TextareaProps) => <Textarea {...props} />,
   FromError: (props: FromErrorProps) => <FormError {...props} />,
 };
 

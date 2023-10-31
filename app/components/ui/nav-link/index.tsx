@@ -12,7 +12,10 @@ export const NavLink = ({ children, href }: NavLinkProps) => {
   const isLinkActive = usePathname() === href;
 
   return (
-    <Link href={href} className={isLinkActive ? "active" : ""}>
+    <Link
+      href={href}
+      className={`flex items-center gap-2 ${isLinkActive ? "active" : ""}`}
+    >
       {children}
     </Link>
   );

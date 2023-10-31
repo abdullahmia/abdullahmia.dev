@@ -31,7 +31,7 @@ export const ProjectForm = () => {
   };
 
   return (
-    <form>
+    <form className="bg-gray-100 p-5">
       {/* Thumbnail Uploader */}
       <ThumbnailUpload
         handleThumbnailRemove={handleThumbnailRemove}
@@ -41,26 +41,22 @@ export const ProjectForm = () => {
 
       <div className="mt-8 space-y-4">
         <div>
-          <FormElements.Input
-            varriant="no-styled"
-            placeholder="Start adding your project with a title"
-          />
+          <FormElements.Label>Project Title</FormElements.Label>
+          <FormElements.Input placeholder="Start adding your project with a title" />
         </div>
 
-        <div className="w-full">
-          <FormElements.Input
-            varriant="no-styled"
-            fontSizeVariant="small"
-            placeholder="Project deployed link"
-            width="full"
-          />
-        </div>
-        <div className="w-full">
-          <FormElements.Input
-            varriant="no-styled"
-            fontSizeVariant="small"
-            placeholder="Project codebase link"
-          />
+        <div className="flex items-center gap-5">
+          <div className="w-full">
+            <FormElements.Label>Project deployed link</FormElements.Label>
+            <FormElements.Input
+              placeholder="Project deployed link"
+              width="full"
+            />
+          </div>
+          <div className="w-full">
+            <FormElements.Label>Project codebase link</FormElements.Label>
+            <FormElements.Input placeholder="Project codebase link" />
+          </div>
         </div>
 
         <div>

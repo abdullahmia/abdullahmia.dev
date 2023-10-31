@@ -32,16 +32,19 @@ const NavDrower = ({
         <div className="">
           {/* Menues */}
           <div className="py-4 px-5">
-            <ul className="flex flex-col menu gap-4 text-sm">
-              <NavLink href="/">
+            <ul
+              className="flex flex-col menu gap-4 text-sm"
+              onClick={toggoleDrower}
+            >
+              <NavLink href="/home">
                 <BiHomeAlt size={18} />
                 Home
               </NavLink>
-              <NavLink href="/">
+              <NavLink href="/project">
                 <RiComputerFill size={18} />
                 Project
               </NavLink>
-              <NavLink href="/">
+              <NavLink href="/contact">
                 <RiContactsLine size={18} />
                 Contact
               </NavLink>
