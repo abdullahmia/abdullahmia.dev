@@ -8,10 +8,10 @@ interface AppLayoutProps {
 
 export default function WebsiteLayout({ children }: AppLayoutProps) {
   return (
-    <>
+    <div>
       <Header />
       <Suspense>{children}</Suspense>
       <Footer />
-    </>
+    </div>
   );
 }

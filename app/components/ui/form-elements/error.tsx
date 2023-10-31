@@ -5,7 +5,7 @@ export interface FromErrorProps {
 export const FormError = (props: FromErrorProps) => {
   return (
     <div>
-      <p className="text-[12px] text-[#ff0000]">{props.children}</p>
+      <p className="text-[12px] text-[#b43c3c]">{props.children}</p>
     </div>
   );
 };

@@ -1,5 +1,3 @@
-"use client";
-
 import { ProjectForm } from "@/app/components/projects/project-form";
 
 const CreateProject = () => {

@@ -59,7 +59,7 @@ const TechStacks = () => {
             </div>
           </div>
 
-          <div>
+          <div className="lg:mt-0 mt-8">
             <div>
               <h2 className="font-semibold text-[#727a80]">JavaScript UI</h2>
               <div className="space-y-2 mt-3">
