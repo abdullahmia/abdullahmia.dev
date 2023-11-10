@@ -1,5 +1,6 @@
 "use client";
 
+import { QueryProvider } from "./query-provider";
 import ReduxProvider from "./redux-provider";
 import { ThemeProvider } from "./theme-provider";
 
@@ -10,7 +11,9 @@ interface ProvidersProps {
 const Providers = ({ children }: ProvidersProps) => {
   return (
     <ReduxProvider>
-      <ThemeProvider>{children}</ThemeProvider>
+      <ThemeProvider>
+        <QueryProvider>{children}</QueryProvider>
+      </ThemeProvider>
     </ReduxProvider>
   );
 };
