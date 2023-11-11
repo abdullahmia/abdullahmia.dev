@@ -1,4 +1,6 @@
 import axios from "axios";
+import constants from "../constants";
+import { cookies } from "../utils";
 
 // TODO: add this endpoint on the environment file
 //! ONLY FOR DEV PURPOSES
@@ -9,10 +11,33 @@ export const api = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
-  // increased the timeout since our server is like a tortoise 🙂
-  // although this is not a good practice
   timeout: 300000,
   timeoutErrorMessage: "Request timed out",
 });
+
+api.interceptors.request.use(
+  (config) => {
+    const token = cookies.get(constants.auth.token);
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+// api.interceptors.response.use(
+//   (response) => {
+//     const responseData = response.data;
+//     return responseData;
+//   },
+//   (error) => {
+//     const errorResponse = {
+//       status: error.response?.status,
+//       message: error.response?.data?.message,
+//     };
+//     return errorResponse;
+//   }
+// );
 
 export default api;
