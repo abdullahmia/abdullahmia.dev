@@ -2,6 +2,7 @@
 
 import { LoginBody } from "@/app/interfaces";
 import { useLogin } from "@/app/services";
+import cogoToast from "cogo-toast";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
@@ -28,10 +29,16 @@ const LoginForm = () => {
 
   // Login handler
   const handleLogin = async (data: LoginBody) => {
+    // setErrorMessage("");
     await mutateAsync(data, {
-      onSuccess: () => {
+      onSuccess: (data) => {
         reset();
         router.push("/admin");
+      },
+      onError: (err) => {
+        if (err?.response?.data?.message) {
+          cogoToast.error(err?.response.data.message);
+        }
       },
     });
   };
@@ -95,11 +102,11 @@ const LoginForm = () => {
               value: true,
               message: "Password is required",
             },
-            // pattern: {
-            //   value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
-            //   message:
-            //     "Password should be at least 8 characters & contain 1 uppercase letter, 1 lowercase letter, and 1 number",
-            // },
+            pattern: {
+              value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm,
+              message:
+                "Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters & special characters",
+            },
           }}
         />
         {errors.password && (

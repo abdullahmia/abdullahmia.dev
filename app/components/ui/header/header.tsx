@@ -48,6 +48,12 @@ const MainHeader = ({ toggleDrawer }: MainHeaderProps) => {
             >
               Login
             </Link>
+            <Link
+              href="/admin"
+              className="lg:block hidden large-btn px-7 py-2 rounded"
+            >
+              Dashboard
+            </Link>
           </div>
         </div>
       </nav>

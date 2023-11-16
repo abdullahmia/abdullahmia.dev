@@ -28,13 +28,9 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 
-type DataItem = {
-  [key: string]: string | number | boolean | null | undefined | JSX.Element;
-};
-
 interface TableProps {
   columns: string[];
-  rows: DataItem[];
+  rows: any;
   itemsPerPage?: number;
   searchPlaceholder?: string;
 }
@@ -47,18 +43,18 @@ export const DataTable = ({
 }: TableProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredData, setFilteredData] = useState<DataItem[]>(rows);
-  const [currentItems, setCurrentItems] = useState<DataItem[]>([]);
+  const [filteredData, setFilteredData] = useState<any>(rows);
+  const [currentItems, setCurrentItems] = useState<any>([]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value;
     setSearchTerm(searchTerm);
 
-    const filteredData = rows.filter((item) => {
+    const filteredData = rows?.filter((item: any) => {
       return Object.values(item)
-        .join(" ")
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase());
+        ?.join(" ")
+        ?.toLowerCase()
+        ?.includes(searchTerm?.toLowerCase());
     });
 
     setFilteredData(filteredData);
@@ -69,7 +65,7 @@ export const DataTable = ({
     if (searchTerm === "") {
       setFilteredData(rows);
     } else {
-      const filteredData = rows.filter((item) => {
+      const filteredData = rows.filter((item: any) => {
         return Object.values(item)
           .join(" ")
           .toLowerCase()
@@ -84,7 +80,7 @@ export const DataTable = ({
   useEffect(() => {
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = filteredData?.slice(indexOfFirstItem, indexOfLastItem);
 
     setCurrentItems(currentItems);
   }, [currentPage, filteredData, itemsPerPage]);
@@ -132,9 +128,9 @@ export const DataTable = ({
               </td>
             </tr>
           )}
-          {currentItems?.map((item, index) => (
+          {currentItems?.map((item: any, index: number) => (
             <tr key={index}>
-              {columns.map((column, index) => (
+              {columns?.map((column, index) => (
                 <td
                   key={index}
                   className="border-b border-zeroGray px-4 py-4 text-[14px] text-[#111827] dark:text-gray-300 dark:border-gray-700"
@@ -147,7 +143,7 @@ export const DataTable = ({
         </tbody>
       </table>
 
-      {rows?.length > itemsPerPage && (
+      {/* {rows?.length > itemsPerPage && (
         <div className="mt-4">
           <ul className="flex space-x-2">
             {currentPage > 1 && (
@@ -162,7 +158,7 @@ export const DataTable = ({
             )}
 
             {Array.from(
-              Array(Math.ceil(filteredData.length / itemsPerPage)).keys()
+              Array(Math.ceil(filteredData?.length / itemsPerPage)).keys()
             )?.map((pageNumber) => (
               <li key={pageNumber}>
                 <button
@@ -190,7 +186,7 @@ export const DataTable = ({
             )}
           </ul>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

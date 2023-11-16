@@ -1,5 +1,6 @@
 "use client";
 
+import { useLogout } from "@/app/services";
 import { Images } from "@/assets";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -13,23 +14,23 @@ import { DropdownElement } from "../dropdown";
 import Modal from "../modal/index";
 
 export const DashboardHeader = () => {
+  // Local State
   const [isLogoutOpen, setIsLogoutOpen] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  // Hooks
   const router = useRouter();
+
+  const { isLoading, logout } = useLogout();
 
   const toggoleLogoutModal = () => {
     setIsLogoutOpen(!isLogoutOpen);
   };
 
-  const logoutHandler = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      setIsLogoutOpen(false);
-      router.push("/auth/login");
-    }, 200);
+  const logoutHandler = async () => {
+    await logout();
+    router.push("/auth/login");
   };
+
   return (
     <>
       <div className="shadow-md dark:shadow-xl p-4 py-2 sticky top-0 duration-200 z-[100]">
