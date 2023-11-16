@@ -20,6 +20,7 @@
     "axios": "^1.6.1",
     "cogo-toast": "^4.2.3",
     "jsdom": "^22.1.0",
+    "moment": "^2.29.4",
     "next": "13.5.4",
     "next-themes": "^0.2.1",
     "react": "^18",

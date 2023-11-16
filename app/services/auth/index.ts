@@ -1,3 +1,5 @@
+"use client";
+
 import { client, endpoints } from "@/app/config";
 import constants from "@/app/constants";
 import { ILoginResponse, LoginBody } from "@/app/interfaces";
