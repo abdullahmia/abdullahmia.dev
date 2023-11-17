@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { redirect, usePathname, useRouter } from "next/navigation";
 import { Suspense, useEffect } from "react";
 import { DashboardLayout as DashLayout } from "../components/ui";
 import { isLoggedIn } from "../services";
@@ -18,11 +18,13 @@ export default function DashboardLayout({ children }: AppLayoutProps) {
     if (!isLoggedIn()) {
       router.push("/auth/login");
     }
-  }, [pathname, router]);
+  }, [router, pathname]);
 
   return isLoggedIn() ? (
     <DashLayout>
       <Suspense>{children}</Suspense>
     </DashLayout>
-  ) : null;
+  ) : (
+    redirect("/auth/login")
+  );
 }

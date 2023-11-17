@@ -1,7 +1,6 @@
 "use client";
 
 import constants from "@/app/constants";
-import { cookies } from "@/app/utils";
 import { Images } from "@/assets";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -26,7 +25,8 @@ export const DashboardHeader = () => {
   };
 
   const logoutHandler = async () => {
-    cookies.delete(constants.auth.token);
+    // cookies.delete(constants.auth.token);
+    localStorage.removeItem(constants.auth.token);
     localStorage.removeItem(constants.auth.user);
     router.push("/auth/login");
   };
