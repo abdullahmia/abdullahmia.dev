@@ -35,6 +35,8 @@ export const Avatar = ({ size, image, name, rounded = true }: AvatarProps) => {
           className={`w-full h-full object-cover ring-2 ring-opacity-10 ${
             rounded ? "rounded-full" : "rounded-none"
           }`}
+          height={64}
+          width={64}
         />
       ) : (
         <span className="text-white text-sm font-semibold">
