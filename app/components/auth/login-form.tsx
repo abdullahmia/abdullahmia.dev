@@ -43,7 +43,7 @@ const LoginForm = () => {
     }
 
     if (isSuccess) {
-      router.push("/dashboard");
+      router.push("/admin");
       reset();
     }
   }, [error, isError, isSuccess, reset, router]);
