@@ -1,6 +1,7 @@
 "use client";
 
-import { useLogout } from "@/app/services";
+import constants from "@/app/constants";
+import { cookies } from "@/app/utils";
 import { Images } from "@/assets";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -20,14 +21,13 @@ export const DashboardHeader = () => {
   // Hooks
   const router = useRouter();
 
-  const { isLoading, logout } = useLogout();
-
   const toggoleLogoutModal = () => {
     setIsLogoutOpen(!isLogoutOpen);
   };
 
   const logoutHandler = async () => {
-    await logout();
+    cookies.delete(constants.auth.token);
+    localStorage.removeItem(constants.auth.user);
     router.push("/auth/login");
   };
 
@@ -76,11 +76,7 @@ export const DashboardHeader = () => {
           <CiSquareInfo size={100} />
           Are you sure you want to logout?
           <div className="flex items-center gap-3">
-            <Button
-              loading={isLoading}
-              onClick={logoutHandler}
-              varriant="danger"
-            >
+            <Button onClick={logoutHandler} varriant="danger">
               <span>Yes</span>
             </Button>
             <Button onClick={toggoleLogoutModal} varriant="outline">
