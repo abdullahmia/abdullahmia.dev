@@ -12,44 +12,7 @@ import { BiDotsVerticalRounded } from "react-icons/bi";
 
 const AllProjects = () => {
   const columns = ["Image", "title", "Tech Stacks", "Date", "Status", "Action"]; // Define column headers
-  // const { isFetching, data: projects } = useGetProjects();
   const { isLoading, data: projects } = useGetAllProjectsQuery({});
-  const data = [
-    {
-      Image: (
-        <Avatar
-          image={Images.ThumbnailImg}
-          name="Instagram Clone"
-          size="large"
-          rounded={false}
-        />
-      ),
-      title: "Instagram Clone",
-      "Tech Stacks": (
-        <div className="flex flex-wrap gap-1">
-          <Chip label="Next js" />
-          <Chip label="Typescript" />
-          <Chip label="Express" />
-          <Chip label="Postgrsql" />
-          <Chip label="prisma" />
-        </div>
-      ),
-      Date: "12/12/2021",
-      Status: "Active",
-      Action: (
-        <DropdownElement.DropdownWrapper
-          actionElement={
-            <Button varriant="no-styled">
-              <BiDotsVerticalRounded className="dark:text-gray-300" />
-            </Button>
-          }
-        >
-          <DropdownElement.DropdownItem>Edit</DropdownElement.DropdownItem>
-          <DropdownElement.DropdownItem>Delete</DropdownElement.DropdownItem>
-        </DropdownElement.DropdownWrapper>
-      ),
-    },
-  ];
 
   // get the table rows
   const getProjectTableRows = () => {

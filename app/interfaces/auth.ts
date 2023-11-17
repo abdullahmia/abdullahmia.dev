@@ -1,8 +1,3 @@
-export interface LoginBody {
-  email: string;
-  password: string;
-}
-
 export interface IUser {
   id: number;
   email: string;
@@ -11,6 +6,11 @@ export interface IUser {
     deviceName: string;
     ipAddress: string;
   }[];
+}
+
+export interface ILoginPayload {
+  email: string;
+  password: string;
 }
 
 export interface ILoginResponse {
