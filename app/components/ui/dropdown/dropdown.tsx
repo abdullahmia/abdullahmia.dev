@@ -10,7 +10,6 @@ export interface DropdownProps {
 
 export const Dropdown = ({ children, actionElement }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const toggleDropdown = (): void => setIsOpen(!isOpen);
   const outsideRef = useRef(null);
 
   useOutsideClick(outsideRef, () => {
@@ -18,6 +17,12 @@ export const Dropdown = ({ children, actionElement }: DropdownProps) => {
       setIsOpen(false);
     }
   });
+
+  const toggleDropdown = (e: any) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsOpen(!isOpen);
+  };
 
   return (
     <div ref={outsideRef} className="relative inline-block text-left">

@@ -7,7 +7,14 @@ export const projectApi = apiSlice.injectEndpoints({
     getAllProjects: builder.query<IProject[], any>({
       query: () => endpoints.project.root,
     }),
+    addNewProject: builder.mutation<IProject, Partial<any>>({
+      query: (body) => ({
+        url: endpoints.project.root,
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useGetAllProjectsQuery } = projectApi;
+export const { useGetAllProjectsQuery, useAddNewProjectMutation } = projectApi;
