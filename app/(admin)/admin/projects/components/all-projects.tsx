@@ -6,7 +6,6 @@ import { DropdownElement } from "@/app/components/ui/dropdown";
 import { IProject } from "@/app/interfaces";
 import { useGetAllProjectsQuery } from "@/app/redux/features/project/project.api";
 import { parseArrayString } from "@/app/utils/string-to-array";
-import { Images } from "@/assets";
 import moment from "moment";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 
@@ -18,10 +17,11 @@ const AllProjects = () => {
   const getProjectTableRows = () => {
     if ((projects?.length as number) > 0) {
       return projects?.map((project: IProject) => {
+        console.log(project.coverImage);
         return {
           Image: (
             <Avatar
-              image={Images.ThumbnailImg}
+              image={project.coverImage}
               name={project.title}
               size="large"
               rounded={false}

@@ -1,5 +1,7 @@
+"use client";
+
 import constants from "../constants";
-import { cookies } from "../utils";
+import { getFromLocalStorage } from "../utils";
 
 /**
  * @description Check if the user is currently logged in.
@@ -16,8 +18,15 @@ import { cookies } from "../utils";
  * }
  */
 export const isLoggedIn = () => {
-  const token = cookies.get(constants.auth.token);
-  const user = localStorage.getItem(constants.auth.user);
+  const authToken = getFromLocalStorage(constants.auth.token);
+  return !!authToken;
+};
 
-  return token && user;
+export const getUserInfo = () => {
+  if (typeof window !== "undefined") {
+    const user = localStorage.getItem(constants.auth.user);
+    if (user) {
+      return JSON.parse(user);
+    }
+  }
 };
