@@ -32,6 +32,7 @@ export const SelectInput = ({
       border: `1px solid ${theme === "light" ? "#e5e7eb" : "#4b5563"}`,
       borderRadius: "5px",
       backgroundColor: theme === "light" ? "#fff" : "transparent",
+      height: "40px",
     }),
     option: (provided, state) => ({
       ...provided,

@@ -4,17 +4,20 @@ import { useEffect, useState } from "react";
 
 import { techStacks } from "@/app/constants";
 import { useAddNewProjectMutation } from "@/app/redux/features/project/project.api";
-import dynamic from "next/dynamic";
+import cogoToast from "cogo-toast";
+import { useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
 import { Button } from "..";
+import Editor from "../editor/editor";
 import { ThumbnailUpload } from "../image-upload/thumbnail-upload";
 import FormElements from "../ui/form-elements";
 
-const Editor = dynamic(() => import("../editor/editor"), { ssr: false });
-
 export const ProjectForm = () => {
+  // Local state
   const [thunmbnail, setThumbnail] = useState<File | null>(null);
-  const [description, setDescription] = useState(null);
+
+  // Hooks
+  const router = useRouter();
 
   const {
     control,
@@ -29,6 +32,7 @@ export const ProjectForm = () => {
       liveLink: "",
       githubLink: "",
       technologies: "",
+      description: "",
     },
   });
 
@@ -48,34 +52,45 @@ export const ProjectForm = () => {
     setThumbnail(null);
   };
 
-  // handle editor content change
-  const handleEditorContentChange = (value: any) => {
-    setDescription(value);
-  };
-
   // Handle Form Submit
   const handleFormSubmit = async (data: any) => {
-    console.log(data);
-    // make the form data
     const formData = new FormData();
     formData.append("image", thunmbnail as File);
     formData.append("title", data.title);
-    formData.append("description", description as unknown as string);
+    formData.append("description", data.description as string);
     formData.append("liveLink", data.liveLink);
     formData.append("githubLink", data.githubLink);
     formData.append("technologies", data.technologies);
+    formData.append("status", "true");
 
-    await addNewProject(formData);
+    addNewProject(formData);
+  };
+
+  // handle draft submit
+  const handleDraftSubmit = (data: any) => {
+    const formData = new FormData();
+    formData.append("image", thunmbnail as File);
+    formData.append("title", data.title);
+    formData.append("description", data.description as string);
+    formData.append("liveLink", data.liveLink);
+    formData.append("githubLink", data.githubLink);
+    formData.append("technologies", data.technologies);
+    formData.append("status", "false");
+
+    addNewProject(formData);
   };
 
   useEffect(() => {
     if (isError) {
-      console.log(error);
+      cogoToast.error("Something went wrong");
     }
     if (isSuccess) {
-      console.log(data);
+      cogoToast.success("Project published successfully");
+      reset();
+      setThumbnail(null);
+      router.push("/admin/projects");
     }
-  }, [isSuccess, isError, error, data]);
+  }, [isSuccess, isError, error, data, router, reset]);
 
   return (
     <form
@@ -122,7 +137,9 @@ export const ProjectForm = () => {
           name="title"
           render={({ field: { onChange, value } }) => (
             <>
-              <FormElements.Label>Project Title</FormElements.Label>
+              <FormElements.Label withAsterisk>
+                Project Title
+              </FormElements.Label>
               <FormElements.Input
                 placeholder="Start adding your project with a title"
                 onChange={onChange}
@@ -147,7 +164,9 @@ export const ProjectForm = () => {
 
         <div className="flex items-center gap-5">
           <div className="w-full">
-            <FormElements.Label>Project deployed link</FormElements.Label>
+            <FormElements.Label withAsterisk>
+              Project deployed link
+            </FormElements.Label>
             <Controller
               name="liveLink"
               control={control}
@@ -177,7 +196,9 @@ export const ProjectForm = () => {
             )}
           </div>
           <div className="w-full">
-            <FormElements.Label>Project codebase link</FormElements.Label>
+            <FormElements.Label withAsterisk>
+              Project codebase link
+            </FormElements.Label>
             <Controller
               name="githubLink"
               control={control}
@@ -209,7 +230,7 @@ export const ProjectForm = () => {
         </div>
 
         <div className="w-full">
-          <FormElements.Label>Tech Stack</FormElements.Label>
+          <FormElements.Label withAsterisk>Tech Stack</FormElements.Label>
           <Controller
             name="technologies"
             control={control}
@@ -239,28 +260,34 @@ export const ProjectForm = () => {
         </div>
 
         <div>
-          <Editor
-            onChange={handleEditorContentChange}
-            initialContent={JSON.stringify(
-              [
-                {
-                  type: "paragraph",
-                  children: [{ text: "A line of text in a paragraph." }],
-                },
-              ],
-              null,
-              2
+          <FormElements.Label withAsterisk>Description</FormElements.Label>
+          <Controller
+            name="description"
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <Editor value={value} onChange={onChange} />
             )}
           />
+          {errors.description && (
+            <FormElements.FromError>
+              {errors.description.message}
+            </FormElements.FromError>
+          )}
         </div>
       </div>
 
       <div className="mt-8 flex items-center gap-2">
         {/* Submit */}
-        <Button type="submit" varriant="primary">
+        <Button loading={isLoading} type="submit" varriant="primary">
           Publish Project
         </Button>
-        <Button varriant="secondary">Save as draft</Button>
+        <Button
+          loading={isLoading}
+          onClick={handleSubmit(handleDraftSubmit)}
+          varriant="secondary"
+        >
+          Save as draft
+        </Button>
       </div>
     </form>
   );

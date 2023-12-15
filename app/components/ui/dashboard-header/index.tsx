@@ -33,7 +33,7 @@ export const DashboardHeader = () => {
 
   return (
     <>
-      <div className="shadow-md dark:shadow-xl p-4 py-2 sticky top-0 duration-200 z-[100]">
+      <div className="bg-white shadow-md dark:shadow-xl p-4 py-2 sticky top-0 duration-200 z-[100] dark:bg-[#1f1b1b]">
         <div className="flex justify-end items-center">
           <div className="flex items-center gap-2">
             <DropdownElement.DropdownWrapper

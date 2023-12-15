@@ -42,18 +42,6 @@ const MainHeader = ({ toggleDrawer }: MainHeaderProps) => {
             <button className="lg:block hidden large-btn px-7 py-2 rounded">
               Follow
             </button>
-            <Link
-              href="/auth/login"
-              className="lg:block hidden large-btn px-7 py-2 rounded"
-            >
-              Login
-            </Link>
-            <Link
-              href="/admin"
-              className="lg:block hidden large-btn px-7 py-2 rounded"
-            >
-              Dashboard
-            </Link>
           </div>
         </div>
       </nav>

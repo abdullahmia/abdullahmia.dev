@@ -1,8 +1,36 @@
+"use client";
+
+import { IProject } from "@/app/interfaces";
+import { useGetAllProjectsQuery } from "@/app/redux/features/project/project.api";
 import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
 import Project from "./project";
 
-const Projects = ({ isBorder = true }: { isBorder: Boolean }) => {
+export interface ProjectsProps {
+  isBorder?: Boolean;
+  isComponent?: Boolean;
+}
+
+const Projects = ({ isBorder = true, isComponent = false }: ProjectsProps) => {
+  const { isLoading, data: projects } = useGetAllProjectsQuery({});
+
+  // render projects
+  const renderProjects = () => {
+    const displayedProjects: IProject[] | undefined = isComponent
+      ? projects?.slice(0, 6).filter((project) => project.status)
+      : projects?.filter((project) => project.status);
+
+    return (displayedProjects?.length as number) > 0 ? (
+      (displayedProjects as IProject[]).map((project, key) => (
+        <Project key={key} project={project} />
+      ))
+    ) : (
+      <div className="text-center text-gray-500 dark:text-gray-400">
+        No Projects Found
+      </div>
+    );
+  };
+
   return (
     <div
       className={`mt-12 pt-12  ${
@@ -11,14 +39,7 @@ const Projects = ({ isBorder = true }: { isBorder: Boolean }) => {
     >
       <h2 className="text-medium font-semibold">Featured Projects</h2>
 
-      <div className="grid lg:grid-cols-3 gap-4 mt-8">
-        <Project />
-        <Project />
-        <Project />
-        <Project />
-        <Project />
-        <Project />
-      </div>
+      <div className="grid lg:grid-cols-3 gap-4 mt-8">{renderProjects()}</div>
 
       {isBorder && (
         <Link
