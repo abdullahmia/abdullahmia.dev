@@ -48,7 +48,7 @@ const Project = (props: ProjectProps) => {
           {project.title}
         </h2>
         <p className="text-[15px] text-[#727a80]">
-          {project.description.slice(0, 100)}
+          {project.description.slice(0, 60)}
         </p>
         <div className="flex items-center gap-2">
           <div className="w-5 h-5">

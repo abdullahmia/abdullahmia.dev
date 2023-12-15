@@ -4,6 +4,7 @@ import { IProject } from "@/app/interfaces";
 import { useGetAllProjectsQuery } from "@/app/redux/features/project/project.api";
 import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
+import ProjectLoader from "./prject-loader";
 import Project from "./project";
 
 export interface ProjectsProps {
@@ -17,8 +18,8 @@ const Projects = ({ isBorder = true, isComponent = false }: ProjectsProps) => {
   // render projects
   const renderProjects = () => {
     const displayedProjects: IProject[] | undefined = isComponent
-      ? projects?.slice(0, 6).filter((project) => project.status)
-      : projects?.filter((project) => project.status);
+      ? projects?.slice(0, 6).filter((project: IProject) => project.status)
+      : projects?.filter((project: IProject) => project.status);
 
     return (displayedProjects?.length as number) > 0 ? (
       (displayedProjects as IProject[]).map((project, key) => (
@@ -38,8 +39,11 @@ const Projects = ({ isBorder = true, isComponent = false }: ProjectsProps) => {
       }`}
     >
       <h2 className="text-medium font-semibold">Featured Projects</h2>
-
-      <div className="grid lg:grid-cols-3 gap-4 mt-8">{renderProjects()}</div>
+      {isLoading ? (
+        <ProjectLoader />
+      ) : (
+        <div className="grid lg:grid-cols-3 gap-4 mt-8">{renderProjects()}</div>
+      )}
 
       {isBorder && (
         <Link

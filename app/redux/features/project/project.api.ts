@@ -20,6 +20,13 @@ export const projectApi = apiSlice.injectEndpoints({
       query: (slug) => `${endpoints.project.root}/${slug}`,
       providesTags: ["Project"],
     }),
+    deleteProject: builder.mutation<IProject, string>({
+      query: (id) => ({
+        url: `${endpoints.project.root}/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Project"],
+    }),
   }),
 });
 
@@ -27,4 +34,5 @@ export const {
   useGetAllProjectsQuery,
   useAddNewProjectMutation,
   useGetProjectBySlugQuery,
+  useDeleteProjectMutation,
 } = projectApi;
