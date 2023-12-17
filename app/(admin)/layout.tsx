@@ -1,10 +1,9 @@
 "use client";
 
-import { redirect, usePathname, useRouter } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { Suspense, useEffect } from "react";
 import { DashboardLayout as DashLayout } from "../components/ui";
 import { Loader } from "../components/ui/loader";
-import constants from "../constants";
 import { isLoggedIn } from "../services";
 
 interface AppLayoutProps {
@@ -12,7 +11,6 @@ interface AppLayoutProps {
 }
 
 export default function DashboardLayout({ children }: AppLayoutProps) {
-  const [token, setToken] = useState<string>("");
   // Hooks
   const router = useRouter();
   const pathname = usePathname();
@@ -23,15 +21,9 @@ export default function DashboardLayout({ children }: AppLayoutProps) {
     }
   }, [router, pathname]);
 
-  useEffect(() => {
-    setToken(localStorage.getItem(constants.auth.token) || "");
-  }, []);
-
-  return token ? (
+  return (
     <DashLayout>
       <Suspense fallback={<Loader />}>{children}</Suspense>
     </DashLayout>
-  ) : (
-    redirect("/auth/login")
   );
 }

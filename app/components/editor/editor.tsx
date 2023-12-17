@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 export interface EditorProps {
   height?: string;
   placeholder?: string;
@@ -8,12 +6,11 @@ export interface EditorProps {
 }
 
 const Editor = (props: EditorProps) => {
-  const [rows, setRows] = useState<number>(1);
-
-  useEffect(() => {
-    const numLines = (props.value.match(/\n/g) || []).length + 1;
-    setRows(numLines > 1 ? numLines : 1);
-  }, [props.value]);
+  const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const inputValue = e.target.value;
+    const newLineValue = inputValue.replace(/\r?\n/g, "\r\n");
+    props.onChange(newLineValue);
+  };
 
   return (
     <textarea
@@ -24,11 +21,7 @@ const Editor = (props: EditorProps) => {
       style={{ height: props.height }}
       placeholder={props.placeholder}
       value={props.value}
-      onChange={(e) => {
-        const inputValue = e.target.value;
-        const newLineValue = inputValue.replace(/\r?\n/g, "\r\n");
-        props.onChange(newLineValue);
-      }}
+      onChange={onChange}
     />
   );
 };
