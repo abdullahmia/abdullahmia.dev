@@ -1,5 +1,6 @@
 "use client";
 
+import { SessionProvider } from "next-auth/react";
 import ReduxProvider from "./redux-provider";
 import { ThemeProvider } from "./theme-provider";
 
@@ -10,7 +11,9 @@ interface ProvidersProps {
 const Providers = ({ children }: ProvidersProps) => {
   return (
     <ReduxProvider>
-      <ThemeProvider>{children}</ThemeProvider>
+      <SessionProvider>
+        <ThemeProvider>{children}</ThemeProvider>
+      </SessionProvider>
     </ReduxProvider>
   );
 };

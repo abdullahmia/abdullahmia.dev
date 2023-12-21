@@ -1,11 +1,8 @@
 "use client";
 
-import { ILoginPayload } from "@/app/interfaces";
-import { useLoginMutation } from "@/app/redux/features/auth/auth.api";
-import cogoToast from "cogo-toast";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Button } from "..";
 import FormElements from "../ui/form-elements";
@@ -27,29 +24,40 @@ const LoginForm = () => {
   const router = useRouter();
 
   // const { isPending: isLoading, mutateAsync } = useLogin();
-  const [login, { isLoading, isError, error, isSuccess }] = useLoginMutation();
+  // const [login, { isLoading, isError, error, isSuccess }] = useLoginMutation();
 
   // Login handler
-  const handleLogin = async (data: ILoginPayload) => {
-    await login(data);
+  // const handleLogin = async (data: ILoginPayload) => {
+  //   await login(data);
+  // };
+
+  // useEffect(() => {
+  //   if (isError) {
+  //     const { data } = error as any;
+  //     cogoToast.error(data?.message, {
+  //       position: "top-right",
+  //     });
+  //   }
+
+  //   if (isSuccess) {
+  //     router.push("/admin");
+  //     reset();
+  //   }
+  // }, [error, isError, isSuccess, reset, router]);
+
+  const submitHandler = async (data: any) => {
+    const response = await signIn("Credentials", {
+      email: data.email,
+      password: data.password,
+    });
+    console.log(response);
   };
 
-  useEffect(() => {
-    if (isError) {
-      const { data } = error as any;
-      cogoToast.error(data?.message, {
-        position: "top-right",
-      });
-    }
-
-    if (isSuccess) {
-      router.push("/admin");
-      reset();
-    }
-  }, [error, isError, isSuccess, reset, router]);
-
   return (
-    <form className="flex flex-col gap-5" onSubmit={handleSubmit(handleLogin)}>
+    <form
+      className="flex flex-col gap-5"
+      onSubmit={handleSubmit(submitHandler)}
+    >
       <div>
         <Controller
           name="email"
@@ -126,7 +134,7 @@ const LoginForm = () => {
           type="submit"
           varriant="primary"
           width="full"
-          loading={isLoading}
+          // loading={isLoading}
         >
           Continue
         </Button>
