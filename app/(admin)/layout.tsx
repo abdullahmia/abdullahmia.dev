@@ -1,8 +1,9 @@
 "use client";
 
-import { redirect, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Suspense, useEffect } from "react";
 import { DashboardLayout as DashLayout } from "../components/ui";
+import { Loader } from "../components/ui/loader";
 import { isLoggedIn } from "../services";
 
 interface AppLayoutProps {
@@ -20,11 +21,9 @@ export default function DashboardLayout({ children }: AppLayoutProps) {
     }
   }, [router, pathname]);
 
-  return isLoggedIn() ? (
+  return (
     <DashLayout>
-      <Suspense>{children}</Suspense>
+      <Suspense fallback={<Loader />}>{children}</Suspense>
     </DashLayout>
-  ) : (
-    redirect("/auth/login")
   );
 }

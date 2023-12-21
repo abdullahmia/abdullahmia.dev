@@ -5,7 +5,8 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "http",
-        hostname: "localhost",
+        // hostname: "localhost",
+        hostname: "api-abdullahmia-dev.onrender.com",
       },
     ],
   },

@@ -44,7 +44,7 @@ export const Button = (props: ButtonProps) => {
           : props.varriant === "ghost"
           ? "bg-transparent text-gray-300 dark:text-gray-200"
           : props.varriant === "outline"
-          ? "bg-white text-[#4e5052] border dark:border-gray-700 dark:bg-[#101011]"
+          ? "bg-white text-[#4e5052] border dark:border-gray-700 dark:bg-[#101011] dark:text-[#b7bfc5]"
           : props.varriant === "no-styled"
           ? "text-gray-800 px-0 py-0"
           : "bg-[#4595D0] text-white"

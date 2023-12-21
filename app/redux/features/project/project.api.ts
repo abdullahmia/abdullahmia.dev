@@ -6,8 +6,33 @@ export const projectApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllProjects: builder.query<IProject[], any>({
       query: () => endpoints.project.root,
+      providesTags: ["Project"],
+    }),
+    addNewProject: builder.mutation<IProject, Partial<any>>({
+      query: (body) => ({
+        url: endpoints.project.root,
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["Project"],
+    }),
+    getProjectBySlug: builder.query<IProject, string>({
+      query: (slug) => `${endpoints.project.root}/${slug}`,
+      providesTags: ["Project"],
+    }),
+    deleteProject: builder.mutation<IProject, string>({
+      query: (id) => ({
+        url: `${endpoints.project.root}/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Project"],
     }),
   }),
 });
 
-export const { useGetAllProjectsQuery } = projectApi;
+export const {
+  useGetAllProjectsQuery,
+  useAddNewProjectMutation,
+  useGetProjectBySlugQuery,
+  useDeleteProjectMutation,
+} = projectApi;

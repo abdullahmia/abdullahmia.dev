@@ -10,7 +10,5 @@
  * const result = parseArrayString(technologiesString);
  */
 export function parseArrayString(arrayString: string) {
-  const validJSONString = arrayString.replace(/'/g, '"');
-  const parsedArray = JSON.parse(validJSONString);
-  return parsedArray;
+  return arrayString.split(",");
 }
