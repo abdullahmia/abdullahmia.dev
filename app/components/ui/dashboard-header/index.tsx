@@ -2,6 +2,7 @@
 
 import constants from "@/app/constants";
 import { Images } from "@/assets";
+import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { AiOutlineUser } from "react-icons/ai";
@@ -76,7 +77,7 @@ export const DashboardHeader = () => {
           <CiSquareInfo size={100} />
           Are you sure you want to logout?
           <div className="flex items-center gap-3">
-            <Button onClick={logoutHandler} varriant="danger">
+            <Button onClick={() => signOut()} varriant="danger">
               <span>Yes</span>
             </Button>
             <Button onClick={toggoleLogoutModal} varriant="outline">

@@ -1,5 +1,7 @@
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { Images } from "@/assets";
 import { Metadata } from "next";
+import { getServerSession } from "next-auth";
 import Image from "next/image";
 import About from "./components/about";
 import Communites from "./components/communites/communites";
@@ -14,7 +16,9 @@ export const metadata: Metadata = {
     "I am a full stack web application developer with experience in HTML, CSS, JavaScript, Python, and Django. I have a proven track record of developing and delivering high-quality web applications that meet the needs of my clients. I am passionate about my work and I am always looking for new challenges.",
 };
 
-const HomePage = () => {
+const HomePage = async () => {
+  const session = await getServerSession(authOptions);
+  console.log(session);
   return (
     <>
       <div className="container flex lg:flex-row flex-col gap-8 py-12 lg:px-0 px-5">
