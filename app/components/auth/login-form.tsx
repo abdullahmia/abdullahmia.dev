@@ -1,16 +1,19 @@
 "use client";
 
 import { ILoginPayload } from "@/app/interfaces";
-import { useLoginMutation } from "@/app/redux/features/auth/auth.api";
 import cogoToast from "cogo-toast";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Button } from "..";
 import FormElements from "../ui/form-elements";
 
 const LoginForm = () => {
+  // Local State
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const {
     control,
     handleSubmit,
@@ -26,27 +29,33 @@ const LoginForm = () => {
   // Hooks
   const router = useRouter();
 
-  // const { isPending: isLoading, mutateAsync } = useLogin();
-  const [login, { isLoading, isError, error, isSuccess }] = useLoginMutation();
-
   // Login handler
   const handleLogin = async (data: ILoginPayload) => {
-    await login(data);
-  };
-
-  useEffect(() => {
-    if (isError) {
-      const { data } = error as any;
-      cogoToast.error(data?.message, {
-        position: "top-right",
+    setIsLoading(true);
+    try {
+      const response = await signIn("credentials", {
+        email: data.email,
+        password: data.password,
+        redirect: false,
       });
-    }
 
-    if (isSuccess) {
-      router.push("/admin");
-      reset();
+      console.log(response, "from login form");
+
+      if (response?.error) {
+        cogoToast.error(response?.error, {
+          position: "top-right",
+        });
+        setIsLoading(false);
+      } else {
+        cogoToast.success("Login Successfull", {
+          position: "top-right",
+        });
+        router.push("/admin");
+      }
+    } catch (error) {
+      //
     }
-  }, [error, isError, isSuccess, reset, router]);
+  };
 
   return (
     <form className="flex flex-col gap-5" onSubmit={handleSubmit(handleLogin)}>

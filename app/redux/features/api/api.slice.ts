@@ -1,4 +1,3 @@
-import constants from "@/app/constants";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const apiSlice = createApi({
@@ -6,8 +5,8 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     // baseUrl: "http://localhost:8000/api/v1",
     baseUrl: "https://api-abdullahmia-dev.onrender.com/api/v1",
-    prepareHeaders: (headers) => {
-      const token = localStorage.getItem(constants.auth.token);
+    prepareHeaders: async (headers, { getState }: any) => {
+      const token = getState().auth.token;
       if (token) {
         headers.set("authorization", `Bearer ${token}`);
       }
