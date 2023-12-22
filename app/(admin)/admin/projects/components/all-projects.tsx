@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/app/components";
-import { Avatar, Chip, DataTable } from "@/app/components/ui";
+import { Chip, DataTable } from "@/app/components/ui";
 import { DropdownElement } from "@/app/components/ui/dropdown";
 import Modal from "@/app/components/ui/modal";
 import { IProject } from "@/app/interfaces";
@@ -12,6 +12,7 @@ import {
 import { parseArrayString } from "@/app/utils/string-to-array";
 import cogoToast from "cogo-toast";
 import moment from "moment";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { CiSquareInfo } from "react-icons/ci";
@@ -39,14 +40,14 @@ const AllProjects = () => {
   const getProjectTableRows = () => {
     if ((projects?.length as number) > 0) {
       return projects?.map((project: IProject) => {
-        console.log(project.coverImage);
         return {
           Image: (
-            <Avatar
-              image={project.coverImage}
-              name={project.title}
-              size="large"
-              rounded={false}
+            <Image
+              src={project.coverImage}
+              className="w-full"
+              width={200}
+              height={500}
+              alt=""
             />
           ),
           title: project.title,
