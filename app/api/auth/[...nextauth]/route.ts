@@ -20,7 +20,7 @@ export const authOptions: AuthOptions = {
       },
       // callbackUrl: "http://localhost:3000/api/auth/callback/credentials",
       async authorize(credentials, _req) {
-        const res = await fetch("http://localhost:8000/api/v1/auth/login", {
+        const res = await fetch(`${process.env.API_URL}/auth/login`, {
           method: "POST",
           body: JSON.stringify({
             email: credentials?.email,
