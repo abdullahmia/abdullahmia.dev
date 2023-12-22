@@ -1,5 +1,6 @@
 "use client";
 
+import { Loader } from "@/app/components/ui/loader";
 import { useGetProjectBySlugQuery } from "@/app/redux/features/project/project.api";
 import { Images } from "@/assets";
 import Image from "next/image";
@@ -25,17 +26,18 @@ export default function Page({ params }: { params: { slug: string } }) {
     }
   }, [isLoading, isError, router]);
 
-  console.log(project?.description);
-
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <main className="container lg:px-0 px-5">
       {project && (
         <div className="mt-6">
           <Image
-            src={project?.coverImage as string}
-            alt={project?.title as string}
-            width={1920}
-            height={1080}
+            src={project.coverImage}
+            className="w-full"
+            width={500}
+            height={500}
+            alt=""
           />
 
           <div className="space-y-4 mt-8">
