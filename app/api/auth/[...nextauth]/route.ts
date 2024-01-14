@@ -20,17 +20,14 @@ export const authOptions: AuthOptions = {
       },
       // callbackUrl: "http://localhost:3000/api/auth/callback/credentials",
       async authorize(credentials, _req) {
-        const res = await fetch(
-          `https://api-abdullahmia-dev.onrender.com/api/v1/auth/login`,
-          {
-            method: "POST",
-            body: JSON.stringify({
-              email: credentials?.email,
-              password: credentials?.password,
-            }),
-            headers: { "Content-Type": "application/json" },
-          }
-        );
+        const res = await fetch(`http://localhost:8000/api/v1/auth/login`, {
+          method: "POST",
+          body: JSON.stringify({
+            email: credentials?.email,
+            password: credentials?.password,
+          }),
+          headers: { "Content-Type": "application/json" },
+        });
         const data = await res.json();
 
         if (data?.message) {

@@ -1,4 +1,4 @@
-import { getServerSession } from "next-auth";
+import { getServerSession, Session } from "next-auth";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import { authOptions } from "../api/auth/[...nextauth]/route";
@@ -10,7 +10,7 @@ interface AppLayoutProps {
 }
 
 export default async function DashboardLayout({ children }: AppLayoutProps) {
-  const session: any = await getServerSession(authOptions);
+  const session: Session | null = await getServerSession(authOptions);
 
   if (!session) {
     redirect("/auth/login");
