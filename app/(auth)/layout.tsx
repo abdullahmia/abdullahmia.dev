@@ -1,23 +1,19 @@
-"use client";
-
-import { useRouter } from "next/navigation";
-import { Suspense, useEffect } from "react";
+import { Session, getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { Suspense } from "react";
+import { authOptions } from "../api/auth/[...nextauth]/route";
 import { Loader } from "../components/ui/loader";
-import { isLoggedIn } from "../services";
 
 interface AppLayoutProps {
   children: React.ReactNode;
 }
 
-export default function AuthLayout({ children }: AppLayoutProps) {
-  // hooks
-  const router = useRouter();
+export default async function AuthLayout({ children }: AppLayoutProps) {
+  const session: Session | null = await getServerSession(authOptions);
 
-  useEffect(() => {
-    if (isLoggedIn()) {
-      router.push("/admin");
-    }
-  }, [router]);
+  if (session) {
+    redirect("/admin");
+  }
 
   return (
     <>
