@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { DashboardLayout as DashLayout } from "../components/ui";
 import { Loader } from "../components/ui/loader";
+import { VerifiedAuth } from "./components/verified-auth";
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -18,7 +19,9 @@ export default async function DashboardLayout({ children }: AppLayoutProps) {
 
   return (
     <DashLayout>
-      <Suspense fallback={<Loader />}>{children}</Suspense>
+      <VerifiedAuth session={session}>
+        <Suspense fallback={<Loader />}>{children}</Suspense>
+      </VerifiedAuth>
     </DashLayout>
   );
 }
